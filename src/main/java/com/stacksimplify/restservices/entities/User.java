@@ -1,10 +1,13 @@
 package com.stacksimplify.restservices.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
@@ -54,8 +57,9 @@ public class User {
 	@Column(name = "SSN", length=50, nullable=false, unique=true)
 	private String ssn;
 
-	
-	
+	@Getter @Setter
+	@OneToMany(mappedBy = "user")
+	private List<Order> orders;
 	
 
 }
