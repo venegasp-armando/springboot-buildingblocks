@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,10 +20,14 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.stacksimplify.restservices.entities.User;
 import com.stacksimplify.restservices.exceptions.UserExistsException;
+import com.stacksimplify.restservices.exceptions.UserNameNotFoundException;
 import com.stacksimplify.restservices.exceptions.UserNotFoundException;
 import com.stacksimplify.restservices.services.UserService;
 
+import jakarta.validation.constraints.Min;
+
 @RestController
+@Validated
 public class UserController {
 
 	@Autowired
@@ -46,7 +51,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/user/{id}")
-	public Optional<User> getUserById(@PathVariable("id") Long id) {
+	public Optional<User> getUserById(@PathVariable("id") @Min(1) Long id) {
 		try {
 			return userService.getUserById(id);
 		} catch (UserNotFoundException ex) {
@@ -69,7 +74,12 @@ public class UserController {
 	}
 	
 	@GetMapping("/user/un/{username}")
-	public User getUserById(@PathVariable("username") String userName) {
-		return userService.getUserByUserName(userName);
+	public User getUserByUserName(@PathVariable("username") String userName) throws UserNameNotFoundException {
+		User user = userService.getUserByUserName(userName);
+		
+		if(user==null){
+			throw new UserNameNotFoundException("User Name not found in repository");
+		}
+		return user;
 	}
 }
