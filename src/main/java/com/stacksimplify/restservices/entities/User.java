@@ -2,6 +2,9 @@ package com.stacksimplify.restservices.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,6 +27,7 @@ import lombok.ToString;
 @ToString()
 @Entity
 @Table(name="_USER")
+@JsonIgnoreProperties({"firstname", "lastname"})
 public class User {
 	
 	@Id
@@ -55,7 +59,8 @@ public class User {
 	private String role;
 	
 	@Getter @Setter
-	@Column(name = "SSN", length=50, nullable=false, unique=true)
+	@JsonIgnore
+	@Column(name = "SSN", length=50, nullable=true, unique=true)
 	private String ssn;
 
 	@Getter @Setter
