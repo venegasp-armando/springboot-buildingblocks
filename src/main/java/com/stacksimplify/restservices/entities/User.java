@@ -2,6 +2,7 @@ package com.stacksimplify.restservices.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -27,7 +28,8 @@ import lombok.ToString;
 @ToString()
 @Entity
 @Table(name="_USER")
-@JsonIgnoreProperties({"firstname", "lastname"})
+//@JsonIgnoreProperties({"firstname", "lastname"}) - Static filterin @JsonIgnore
+@JsonFilter(value = "userFilter")
 public class User {
 	
 	@Id
@@ -59,7 +61,7 @@ public class User {
 	private String role;
 	
 	@Getter @Setter
-	@JsonIgnore
+	//@JsonIgnore - Static filterin @JsonIgnore
 	@Column(name = "SSN", length=50, nullable=true, unique=true)
 	private String ssn;
 
