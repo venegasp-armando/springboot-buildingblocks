@@ -1,6 +1,7 @@
 package com.stacksimplify.restservices.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,10 +28,12 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_generator")
 	@SequenceGenerator(name = "order_generator", sequenceName = "order_seq", allocationSize = 1)
+	@JsonView(Views.Internal.class)
 	@Getter @Setter
 	private Long orderid;
 	
 	@Column(name = "DESCRIPTION", length=50)
+	@JsonView(Views.Internal.class)
 	@Getter @Setter
 	private String description;
 	
