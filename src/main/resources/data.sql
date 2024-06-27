@@ -12,9 +12,9 @@ CREATE SEQUENCE _user_seq
   START WITH 1
   INCREMENT BY 1
   MINVALUE 1;
-insert into _user values((select next value for _user_seq), 'kreddy@stacksimplify.com', 'Kalyan', 'Reddy', 'admin', 'ssn101', 'kreddy');
-insert into _user values((select next value for _user_seq), 'gwiser@stacksimplify.com', 'Greg', 'Wiser', 'admin', 'ssn102', 'gwiser');
-insert into _user values((select next value for _user_seq), 'dmark@stacksimplify.com', 'David', 'Mark', 'admin', 'ssn103', 'dmark');
+insert into _user values((select next value for _user_seq), 'New York', 'kreddy@stacksimplify.com', 'Kalyan', 'Reddy', 'admin', 'ssn101', 'kreddy');
+insert into _user values((select next value for _user_seq), 'New Jersey', 'gwiser@stacksimplify.com', 'Greg', 'Wiser', 'admin', 'ssn102', 'gwiser');
+insert into _user values((select next value for _user_seq), 'California', 'dmark@stacksimplify.com', 'David', 'Mark', 'admin', 'ssn103', 'dmark');
 
 create table orders (
   orderid bigint auto_increment, 

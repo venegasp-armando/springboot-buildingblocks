@@ -2,9 +2,6 @@ package com.stacksimplify.restservices.entities;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import jakarta.persistence.Column;
@@ -73,6 +70,11 @@ public class User {
 	@JsonView(Views.Internal.class)
 	private String ssn;
 
+	@Getter @Setter
+	@Column(name = "ADDRESS", length=50)
+	@JsonView(Views.Internal.class)
+	private String address;
+	
 	@Getter @Setter
 	@OneToMany(mappedBy = "user")
 	@JsonView(Views.Internal.class)
