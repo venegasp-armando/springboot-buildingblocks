@@ -109,6 +109,16 @@
 		    <artifactId>spring-boot-admin-starter-client</artifactId>
 		    <version>3.3.2</version>
 		</dependency>
+		<!-- dependency>
+		    <groupId>io.micrometer</groupId>
+		    <artifactId>micrometer-core</artifactId>
+		    <version>1.13.1</version>
+		</dependency>
+	    <dependency>
+		  <groupId>io.micrometer</groupId>
+		  <artifactId>micrometer-registry-jmx</artifactId>
+		  <version>1.13.1</version>
+		</dependency -->
 	</dependencies>
 
 	<build>
