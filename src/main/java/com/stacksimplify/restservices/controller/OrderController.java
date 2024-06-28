@@ -4,14 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 import com.stacksimplify.restservices.entities.Order;
 import com.stacksimplify.restservices.entities.User;
@@ -19,8 +17,9 @@ import com.stacksimplify.restservices.exceptions.UserNotFoundException;
 import com.stacksimplify.restservices.repositories.OrderRepository;
 import com.stacksimplify.restservices.repositories.UserRepository;
 
-import jakarta.validation.constraints.Min;
+import io.swagger.annotations.Api;
 
+@Api(tags = "User Management RESTful Services", value = "UserController")
 @RestController
 @RequestMapping(value = "/user")
 public class OrderController {
