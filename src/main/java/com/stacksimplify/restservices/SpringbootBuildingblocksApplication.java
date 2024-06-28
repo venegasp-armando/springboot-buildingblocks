@@ -2,7 +2,6 @@ package com.stacksimplify.restservices;
 
 import java.util.Locale;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -31,9 +30,5 @@ public class SpringbootBuildingblocksApplication {
 		return messageSource;
 	}
 	
-	@Bean
-    public ModelMapper modelMapper() {
-        return new ModelMapper();
-    }
 
 }
